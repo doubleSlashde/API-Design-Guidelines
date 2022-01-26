@@ -1,6 +1,4 @@
-'use strict';
-
-module.exports = (targetValue, { wellUnderstood }, paths) => {
+module.exports = (targetValue, { wellUnderstood }, { path }) => {
   const result = [];
   if (targetValue === null || typeof targetValue !== 'object') {
     return result;
@@ -14,7 +12,7 @@ module.exports = (targetValue, { wellUnderstood }, paths) => {
       if (!(code in wellUnderstood)) {
         result.push({
           message: `${code} is not a well-understood HTTP status code`,
-          path: [...paths.target, verb, 'responses', code],
+          path: [...path, verb, 'responses', code],
         });
         continue;
       }
@@ -23,7 +21,7 @@ module.exports = (targetValue, { wellUnderstood }, paths) => {
       if (!allowedVerbs.includes('ALL') && !allowedVerbs.includes(upperCaseVerb)) {
         result.push({
           message: `${code} is not a well-understood HTTP status code for ${upperCaseVerb}`,
-          path: [...paths.target, verb, 'responses', code],
+          path: [...path, verb, 'responses', code],
         });
         continue;
       }
