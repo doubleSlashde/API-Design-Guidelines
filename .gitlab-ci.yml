@@ -2,7 +2,7 @@ image: node:latest
 
 .deployment:
   only:
-    - release/*
+    - /^release\/.*$/
 
 stages:
   - deploy
