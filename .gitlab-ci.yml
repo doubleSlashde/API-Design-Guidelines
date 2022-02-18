@@ -11,7 +11,7 @@ deployCompleteSet:
   extends: .deployment
   stage: deploy
   script:
-    - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+    - npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
     - version=$(echo ${CI_COMMIT_REF_NAME} | sed 's/.*v//' | sed 's/$/.0/g')
     - cd ./rulesets/restCompleteSet/
     - npm version $version
