@@ -1,13 +1,13 @@
 extends: [
     spectral:oas,
-    ./rulesets/restBasicsDataFormat.yml,
-    ./rulesets/restBasicMetaInformation.yml,
-    ./rulesets/restBasicsDesign.yml,
-    ./rulesets/restBasicSecurity.yml,
-    ./rulesets/restBasicsHttpHeaders.yml,
-    ./rulesets/restBasicsHttpRequest.yml,
-    ./rulesets/restBasicsHttpStatusCodes.yml,
-    ./rulesets/restBasicsJsonPayload.yml,
-    ./rulesets/restBasicUrls.yml
+    ./rulesets/restBasicsDataFormat/restBasicsDataFormat.yml,
+    ./rulesets/restBasicMetaInformation/restBasicMetaInformation.yml,
+    ./rulesets/restBasicsDesign/restBasicsDesign.yml,
+    ./rulesets/restBasicSecurity/restBasicSecurity.yml,
+    ./rulesets/restBasicsHttpHeaders/restBasicsHttpHeaders.yml,
+    ./rulesets/restBasicsHttpRequest/restBasicsHttpRequest.yml,
+    ./rulesets/restBasicsHttpStatusCodes/restBasicsHttpStatusCodes.yml,
+    ./rulesets/restBasicsJsonPayload/restBasicsJsonPayload.yml,
+    ./rulesets/restBasicUrls/restBasicUrls.yml
     ]
 

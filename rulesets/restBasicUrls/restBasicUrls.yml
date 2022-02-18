@@ -3,14 +3,14 @@ extends: [[spectral:oas, all]]
 documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#
 
 functions:
-  - ../../functions/assert-http-codes-for-operation
-  - ../../functions/count-resource-types
-  - ../../functions/is-object-schema
-  - ../../functions/is-problem-json-schema
-  - ../../functions/must-use-common-required-fields
-  - ../../functions/must-use-common-structure
-  - ../../functions/must-use-http-methods-correctly
-  - ../../functions/empty-object
+  - ../../../functions/assert-http-codes-for-operation
+  - ../../../functions/count-resource-types
+  - ../../../functions/is-object-schema
+  - ../../../functions/is-problem-json-schema
+  - ../../../functions/must-use-common-required-fields
+  - ../../../functions/must-use-common-structure
+  - ../../../functions/must-use-http-methods-correctly
+  - ../../../functions/empty-object
 
 rules:
 

@@ -1,0 +1,8 @@
+{
+  "name": "rest-basic-http-json-payload",
+  "version": "0.0.1",
+  "description": "Basic HTTP JSON Payload",
+  "main": "restBasicsJsonPayload.yml",
+  "scripts": {},
+  "license": "ISC"
+}

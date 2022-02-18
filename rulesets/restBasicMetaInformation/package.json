@@ -1,0 +1,8 @@
+{
+  "name": "rest-basic-meta-information",
+  "version": "0.0.1",
+  "description": "Basic meta information",
+  "main": "restBasicMetaInformation.yml",
+  "scripts": {},
+  "license": "ISC"
+}

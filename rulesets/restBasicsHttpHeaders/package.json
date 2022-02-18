@@ -1,0 +1,8 @@
+{
+  "name": "rest-basic-http-headers",
+  "version": "0.0.1",
+  "description": "Basic HTTP Headers",
+  "main": "restBasicsHttpHeaders.yml",
+  "scripts": {},
+  "license": "ISC"
+}

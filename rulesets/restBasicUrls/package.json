@@ -1,0 +1,8 @@
+{
+  "name": "rest-basic-urls",
+  "version": "0.0.1",
+  "description": "Basic URLs",
+  "main": "restBasicUrls.yml",
+  "scripts": {},
+  "license": "ISC"
+}
