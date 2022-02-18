@@ -1,0 +1,9 @@
+image: node:latest
+stages:
+  - deploy
+
+deployCompleteSet:
+  stage: deploy
+  script:
+    - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+    - npm publish rulesets/restCompleteSet
