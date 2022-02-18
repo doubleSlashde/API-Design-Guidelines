@@ -1,9 +1,17 @@
 image: node:latest
+
+.deployment:
+  only:
+    - release/*
+
 stages:
   - deploy
 
 deployCompleteSet:
+  extends: .deployment
   stage: deploy
   script:
     - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+    - version=$(echo ${CI_COMMIT_REF_NAME} | sed 's/.*v//' | sed 's/$/.0/g')
+    - npm version $version
     - npm publish ./rulesets/restCompleteSet
