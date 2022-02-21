@@ -11,9 +11,11 @@ deployCompleteSet:
   extends: .deployment
   stage: deploy
   script:
-    - npm config set scope @doubleslashde --global
-    - npm config set @doubleslashde:registry https://registry.npmjs.org/
-    - npm config set //registry.npmjs.org/:_authToken='${NPM_TOKEN}'
+    - echo "@doubleslashde:registry=http://registry.npmjs.org/" >> .npmrc
+    - echo "unsafe-perm=true"
+    - echo "//registry.npmjs.org/:_password:${NPM_USER_PW}" >> .npmrc
+    - echo "//registry.npmjs.org/:username:${NPM_USER}" >> .npmrc
+    - echo "//registry.npmjs.org/:always-auth=false" >> .npmrc
     - version=$(echo ${CI_COMMIT_REF_NAME} | sed 's/.*v//' | sed 's/$/.0/g')
     - cd ./rulesets/restCompleteSet/
     - npm version $version
