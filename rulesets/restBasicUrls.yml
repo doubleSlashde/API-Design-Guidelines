@@ -48,7 +48,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "^(\\/{0,1}([a-z][a-z0-9]*)(-[a-z][a-z0-9]+))*(\\/{[a-z][a-z0-9]*\\})?$"
+        match: "(\\/?(([a-z]+)(-?[a-z]+)))*(\\/(([a-z]+)|(\\{?([a-z]+)([A-Z]+)?([a-z]+)\\}?)))+?$"
 
   # MUST use normalized paths without empty path segments and trailing slashes [136]
   # => https://opensource.zalando.com/restful-api-guidelines/#136
