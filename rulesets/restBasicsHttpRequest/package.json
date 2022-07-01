@@ -1,8 +1,0 @@
-{
-  "name": "rest-basic-http-requests",
-  "version": "0.0.1",
-  "description": "Basic HTTP Requests",
-  "main": "restBasicsHttpRequest.yml",
-  "scripts": {},
-  "license": "ISC"
-}

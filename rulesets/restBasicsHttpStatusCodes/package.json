@@ -1,8 +1,0 @@
-{
-  "name": "rest-basic-http-status-codes",
-  "version": "0.0.1",
-  "description": "Basic HTTP Status Codes",
-  "main": "restBasicsHttpStatusCodes.yml",
-  "scripts": {},
-  "license": "ISC"
-}

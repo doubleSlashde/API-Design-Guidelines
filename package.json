@@ -1,0 +1,9 @@
+{
+	"dependencies": {
+		"@doubleslashde/rest-complete-set": "1.0.0",
+		"@stoplight/spectral-cli": "^6.1.1"
+	},
+	"scripts": {
+		"lint": "spectral lint path/to/openAPI"
+	}
+}

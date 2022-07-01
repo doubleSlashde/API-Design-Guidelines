@@ -1,9 +1,0 @@
-{
-  "name": "@doubleslashde/rest-complete-set",
-  "version": "1.0.0",
-  "description": "Complete Set of REST-Ruleset",
-  "main": "restCompleteSet.yml",
-  "scripts": {},
-  "license": "ISC",
-  "author": "doubleSlash"
-}

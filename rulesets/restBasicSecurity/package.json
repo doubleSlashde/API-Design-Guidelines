@@ -1,8 +1,0 @@
-{
-  "name": "rest-basic-security",
-  "version": "0.0.1",
-  "description": "Basic security",
-  "main": "restBasicSecurity.yml",
-  "scripts": {},
-  "license": "ISC"
-}
