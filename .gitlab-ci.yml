@@ -18,6 +18,7 @@ deployCompleteSet:
     - version=$(echo ${CI_COMMIT_REF_NAME} | sed 's/.*v//' | sed 's/$/.0/g')
     - cd ./rulesets
     - cp *.yml restCompleteSet
+    - cp ../README.md restCompleteSet
     - cp -R functions restCompleteSet
     - cd restCompleteSet
     - npm version $version
