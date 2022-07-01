@@ -28,7 +28,7 @@ extends:
     - '@doubleslashde/rest-complete-set'
 ```
 After you did the configuration, you can pull the ruleset with `npm install`. Then you can run the linting with `npm run lint`.
-
+For more details, see the example-branch of this project.
 
 
 ## Versioning
