@@ -1,14 +1,23 @@
-# Spectral Ruleset
+## How to include the Guidelines to your Spectral lint
 
-Dieses Repository beinhaltet ein Ruleset basierend auf den // API Guidelines
-
-# How to Contribute
-
-Wenn du zu diesem Repo contributen willst, dann erstelle dafür bitte einen Feature-Branch und erstelle einen Merge Request sobald du mit deinen Änderungen fertig bist.
-
-# Versioning
-
-Die Versionierung der Rulesets erfolgt in Branches. Es wird folgendermaßen released: 'release/vMAJOR.MINOR'
-
-- Die Major version wird hochgezählt wenn Regeln verändert oder gelöscht werden.
-- Die Minor version wird hochgezählt wenn eine neue Regel hinzugefügt wurde.
+If you decide to add our spectral guidelines, you must have npm installed.
+Then you need to add it as npm dependency.
+To do so, you first need to create a package.json file with the following content:
+```
+{
+    "dependencies": {
+        "@doubleslashde/rest-complete-set": "x.x.x",
+        "@stoplight/spectral-cli": "^6.1.1"
+    },
+    "scripts": {
+        "lint": "spectral lint path/to/openAPI"
+    }
+}
+```
+Your spectral.yml ruleset needs to include the module as following:
+```
+extends: 
+    - '@doubleslashde/rest-complete-set'
+```
+After you did the configuration, you can pull the ruleset with `npm install`. 
+Then you can run the linting with `npm run lint`.
