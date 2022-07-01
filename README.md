@@ -21,3 +21,5 @@ extends:
 ```
 After you did the configuration, you can pull the ruleset with `npm install`. 
 Then you can run the linting with `npm run lint`.
+
+See the example-branch for an example implementation.
