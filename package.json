@@ -1,6 +1,6 @@
 {
 	"dependencies": {
-		"@doubleslashde/rest-complete-set": "1.0.0",
+		"@doubleslashde/rest-complete-set": "1.1.0",
 		"@stoplight/spectral-cli": "^6.1.1"
 	},
 	"scripts": {
