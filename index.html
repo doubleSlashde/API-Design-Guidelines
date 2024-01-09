@@ -547,7 +547,8 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#resources">Resources</a>
 <ul class="sectlevel2">
 <li><a href="#naming-resources">Naming of Resources</a></li>
-<li><a href="#identification-resources">Identification of resources</a></li>
+<li><a href="#identification-resources">Identification of Resources</a></li>
+<li><a href="#identifier-type">Type of Identifier</a></li>
 <li><a href="#interaction-resources">Interaction with resources</a></li>
 <li><a href="#versioning">Versioning</a></li>
 </ul>
@@ -564,8 +565,10 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 </li>
 <li><a href="#parameter">Parameter</a>
 <ul class="sectlevel2">
+<li><a href="#naming-query-parameters">Naming of Query Parameters</a></li>
 <li><a href="#filtering">Filtering</a></li>
 <li><a href="#selection">Selection</a></li>
+<li><a href="#inclusion">Inclusion</a></li>
 <li><a href="#sorting">Sorting</a></li>
 <li><a href="#pagination">Pagination</a></li>
 </ul>
@@ -598,6 +601,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#graphql">GraphQL</a></li>
 <li><a href="#odata">OData</a></li>
 <li><a href="#rest-morethancrud">REST - more than just CRUD</a></li>
+<li><a href="#checking-existence">Checking for Existence</a></li>
 </ul>
 </li>
 <li><a href="#examples">Examples of good REST-APIs</a></li>
@@ -658,7 +662,10 @@ The following contents are based on the <a href="https://github.com/zalando/rest
 <p><a href="#naming-resources">Naming of Resources</a></p>
 </li>
 <li>
-<p><a href="#identification-resources">Identification of resources</a></p>
+<p><a href="#identification-resources">Identification of Resources</a></p>
+</li>
+<li>
+<p><a href="#identifier-type">Type of Identifier</a></p>
 </li>
 <li>
 <p><a href="#interaction-resources">Interaction with resources</a></p>
@@ -696,10 +703,16 @@ The following contents are based on the <a href="https://github.com/zalando/rest
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
+<p><a href="#naming-query-parameters">Naming of Query Parameters</a></p>
+</li>
+<li>
 <p><a href="#filtering">Filtering</a></p>
 </li>
 <li>
 <p><a href="#selection">Selection</a></p>
+</li>
+<li>
+<p><a href="#inclusion">Inclusion</a></p>
 </li>
 <li>
 <p><a href="#sorting">Sorting</a></p>
@@ -777,6 +790,9 @@ The following contents are based on the <a href="https://github.com/zalando/rest
 <li>
 <p><a href="#rest-morethancrud">REST - more than just CRUD</a></p>
 </li>
+<li>
+<p><a href="#checking-existence">Checking for Existence</a></p>
+</li>
 </ol>
 </div>
 </li>
@@ -814,13 +830,116 @@ In addition, the guidelines can be brought to the customer as an additional // a
 <div class="ulist">
 <ul>
 <li>
-<p>quick and easy to understand</p>
+<p><strong>Quick and easy to understand (approachability and learnability)</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>built from a <em>user&#8217;s</em> perspective - not based on internal model</p>
 </li>
 <li>
-<p>hard to use incorrectly</p>
+<p>discoverable</p>
 </li>
 <li>
-<p>complete and consistent</p>
+<p>explicit</p>
+</li>
+<li>
+<p>helpful feedback</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Hard to use incorrectly (not error-prone)</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>avoiding implicit user assumptions</p>
+</li>
+<li>
+<p>preventing errors by validation</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Stable but extensible</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>complete for the <em>user&#8217;s</em> use cases</p>
+</li>
+<li>
+<p>minimal, no <a href="https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it">YAGNI</a></p>
+</li>
+<li>
+<p>hiding implementation details</p>
+</li>
+<li>
+<p>extensible without the need of versioning</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Consistent</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>self-consistent</p>
+</li>
+<li>
+<p>consistent across the organisation</p>
+</li>
+<li>
+<p>consistent with common practices &amp; standards</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Adaptable</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>without getting too complex</p>
+</li>
+<li>
+<p>keeping the user in control by allowing various flows instead of forcing specific order</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Optimized</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>reducing number of requests</p>
+</li>
+<li>
+<p>reducing bandwidth (size of requests and responses)</p>
+</li>
+<li>
+<p>caching</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Secure</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>avoiding to provide information that could be used for attacks</p>
+</li>
+<li>
+<p>avoiding to expose sensitive information to unauthorized users</p>
+</li>
+<li>
+<p>designed to prevent enumeration attacks</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -831,7 +950,24 @@ In addition, the guidelines can be brought to the customer as an additional // a
 <h2 id="structure-howtoread"><a class="anchor" href="#structure-howtoread"></a>Structure - How to read</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <strong>//</strong> REST API Guidelines are divided into several  sections: The Resources section covers the structure, naming and versioning of resources. The next section describes best practices for using resource parameters for sorting, filtering, selection and pagination. This is followed by the section error handling which describes a number of useful status codes and how an error message should be written. Next is shown how you can secure your API followed by best practices of how to document your API. In addition, these Guidelines describe how you can improve the performance of your API using caching, compression and asynchronicity. Subsequently, further topics like HATEOAS, GraphQL and OData are described. Finally, examples of existing good REST APIs are shown, followed by references to sources and literature used in these guidelines.</p>
+<p>The <strong>//</strong> REST API Guidelines are divided into several  sections:</p>
+</div>
+<div class="paragraph">
+<p>First an <a href="#general">introductory chapter</a> describes the <a href="#richardson">different maturity levels of HTTP APIs</a>.</p>
+</div>
+<div class="paragraph">
+<p>Then, the <a href="#resources">resources section</a> covers the structure, <a href="#naming-resources">naming</a> and <a href="#versioning">versioning</a> of resources. The next section describes best practices for using resource <a href="#parameter">parameters</a> for <a href="#sorting">sorting</a>, <a href="#filtering">filtering</a>, <a href="#selection">selection</a>, <a href="#inclusion">inclusion</a> and <a href="#pagination">pagination</a>.</p>
+</div>
+<div class="paragraph">
+<p>This is followed by the section <a href="#error-handling">error handling</a> which describes a number of useful <a href="#status-codes">status codes</a> and how an <a href="#error-details">error message</a> should be written.
+Next, it is shown how you can <a href="#security">secure</a> your API followed by best practices of how to <a href="#documentation">document</a> your API.
+In addition, these Guidelines describe, how you can <a href="#performance">improve the performance</a> of your API using <a href="#caching">caching</a>, <a href="#compression">compression</a> and <a href="#asynchronicity">asynchronicity</a>.</p>
+</div>
+<div class="paragraph">
+<p>Subsequently, further topics and concepts like <a href="#hateoas">HATEOAS</a>, <a href="#graphql">GraphQL</a> and <a href="#odata">OData</a> are described. The guide also describes how to use <a href="#rest-morethancrud">actions as resources</a> and gives advice how to <a href="#checking-existence">check for existence of a resource</a>.</p>
+</div>
+<div class="paragraph">
+<p>Finally, <a href="#examples">examples of existing good REST APIs</a> are shown, followed by <a href="#reference">references to sources and literature</a> used in these guidelines.</p>
 </div>
 <div class="paragraph">
 <p>In addition, DOs <strong>[Good]</strong> and DONTs <strong>[Bad]</strong> are highlighted in each section.</p>
@@ -849,7 +985,7 @@ In addition, the guidelines can be brought to the customer as an additional // a
 <div class="sect3">
 <h4 id="level-0"><a class="anchor" href="#level-0"></a>Level 0</h4>
 <div class="paragraph">
-<p>Level zero of maturity does not make use of any of URI, HTTP Methods, and <a href="https://en.wikipedia.org/wiki/HATEOAS">HATEOAS</a> capabilities.These services have a <strong>single URI</strong> and use a <strong>single HTTP method</strong> (typically POST).</p>
+<p>Level zero of maturity does not make use of any URI, HTTP Methods, and <a href="https://en.wikipedia.org/wiki/HATEOAS">HATEOAS</a> capabilities. These services have a <strong>single URI</strong> and use a <strong>single HTTP method</strong> (typically POST).</p>
 </div>
 </div>
 <div class="sect3">
@@ -879,13 +1015,17 @@ In addition, the guidelines can be brought to the customer as an additional // a
 <div class="sect2">
 <h3 id="naming-resources"><a class="anchor" href="#naming-resources"></a>Naming of Resources</h3>
 <div class="paragraph">
-<p>Every good RESTful API is resource based. A resource is a representation of a domain entity for clients. Ideally, all resources represent the domain of the API.
+<p>Every good RESTful API is resource based.
+A resource is a representation of a domain entity for clients.
+Ideally, all resources represent the domain of the API.
 A resource should therefore fulfill the following points:</p>
 </div>
 <div class="sect3">
 <h4 id="name-the-resource-as-noun-in-plural"><a class="anchor" href="#name-the-resource-as-noun-in-plural"></a>Name the resource as noun in plural</h4>
 <div class="paragraph">
-<p>Resources should be expressed as nouns, because they represent professional entities. By using the plural you also get a resource for collection queries.</p>
+<p>Resources should be expressed as nouns, because they represent professional entities.
+Avoid abbreviations and acronyms.
+By using the plural you also get a resource for collection queries.</p>
 </div>
 <div class="paragraph">
 <p><strong>Good</strong></p>
@@ -907,7 +1047,9 @@ A resource should therefore fulfill the following points:</p>
 <div class="sect3">
 <h4 id="name-the-resource-domain-specific"><a class="anchor" href="#name-the-resource-domain-specific"></a>Name the resource domain specific</h4>
 <div class="paragraph">
-<p>As already mentioned several times, REST resources are functional entities. Therefore it supports the understanding if resources are named specifically. Make sure that the spoken language in everyday project work is also reflected in the resources (<a href="https://en.wikipedia.org/wiki/Conway%27s_law">Conway&#8217;s law</a>).</p>
+<p>As already mentioned several times, REST resources are functional entities.
+Therefore, it supports the understanding if resources are named specifically.
+Make sure that the spoken language in everyday project work is also reflected in the resources (<a href="https://en.wikipedia.org/wiki/Conway%27s_law">Conway&#8217;s law</a>).</p>
 </div>
 <div class="paragraph">
 <p><strong>Good</strong></p>
@@ -929,23 +1071,7 @@ A resource should therefore fulfill the following points:</p>
 <div class="sect3">
 <h4 id="use-spinal-case-notation"><a class="anchor" href="#use-spinal-case-notation"></a>Use spinal-case notation</h4>
 <div class="paragraph">
-<p>In principle there are three common ways of writing:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>CamelCase (or lower camelCase)</p>
-</li>
-<li>
-<p>snake_case</p>
-</li>
-<li>
-<p><strong>spinal-case</strong></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>While CamelCase is unusual in URIs and case-sensitive, snake_case and spinal-case have similar advantages and disadvantages. Since the spinal-case notation is becoming more and more established, it is recommended to use it here as well.</p>
+<p>Use spinal-case notation for resource names.</p>
 </div>
 <div class="paragraph">
 <p><strong>Good</strong></p>
@@ -968,7 +1094,8 @@ A resource should therefore fulfill the following points:</p>
 <div class="sect3">
 <h4 id="use-sub-resources-to-represent-relations-between-entities"><a class="anchor" href="#use-sub-resources-to-represent-relations-between-entities"></a>Use sub-resources to represent relations between entities</h4>
 <div class="paragraph">
-<p>Entities often have dependencies on each other. Such a dependency can be represented by nesting several resources (separated by /).</p>
+<p>Entities often have dependencies on each other.
+Such a dependency can be represented by nesting several resources (separated by /).</p>
 </div>
 <div class="paragraph">
 <p><strong>Good</strong></p>
@@ -990,13 +1117,18 @@ A resource should therefore fulfill the following points:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="identification-resources"><a class="anchor" href="#identification-resources"></a>Identification of resources</h3>
+<h3 id="identification-resources"><a class="anchor" href="#identification-resources"></a>Identification of Resources</h3>
 <div class="paragraph">
-<p>The very first step in designing a REST API based application is – identifying the objects which will be presented as resources. Resources should be defined to cover 90% of all its client’s use cases. A useful resource should contain as much information as necessary, but as little as possible. A resource can be a collection or a singleton. For example, "customers" is a collection resource and "customer" a singleton resource. A collection resource can be identified using the Uniform Resource Name (URN) e.g:</p>
+<p>The very first step in designing a REST API based application is – identifying the objects which will be presented as resources.
+Resources should be defined to cover 90% of all its client’s use cases.
+A useful resource should contain as much information as necessary, but as little as possible.
+A resource can be a collection or a singleton.
+For example, "customers" is a collection resource and "customer" a singleton resource.
+A collection resource can be identified using the Uniform Resource Name (URN) e.g:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>/customers</code></pre>
+<pre class="CodeRay highlight"><code data-lang="text">/customers</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1008,7 +1140,8 @@ A resource should therefore fulfill the following points:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>A resource may contain sub-collection resources. For example "accounts" of a particular "customer" can be identified using the URN:</p>
+<p>A resource may contain sub-collection resources.
+For example "accounts" of a particular "customer" can be identified using the URN:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1025,9 +1158,253 @@ A resource should therefore fulfill the following points:</p>
 </div>
 </div>
 <div class="sect2">
+<h3 id="identifier-type"><a class="anchor" href="#identifier-type"></a>Type of Identifier</h3>
+<div class="paragraph">
+<p>For security and data protection reasons it is advisable that the identifier is not enumerable or easy to guess.
+It must not contain personal or private data (URLs appear in access logs, browser history,&#8230;&#8203;).
+The type of identifier should not allow attackers or competitors to make inferences about the system (enumeration attacks).
+For practical reasons the identifier should not be subject to change.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<strong>Prefer UUIDs as identifiers</strong> (and as primary keys).<br>
+Consider the specific consequences carefully if you choose another identifier type taking into account enumeration attacks, data and privacy protection, web application firewalls.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Only use enumerable IDs if you can be certain that there is no risk of enumeration attacks in the specific context.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Common type of identifiers:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 42.8571%;">
+<col style="width: 28.5714%;">
+<col style="width: 28.5715%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Identifier Type</th>
+<th class="tableblock halign-left valign-top">Pros</th>
+<th class="tableblock halign-left valign-top">Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>UUID</strong><br>
+<em>= Universally Unique Identifier</em></p>
+</div>
+<div class="paragraph">
+<p><span class="underline">Examples:</span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/documents/f6c47559-f002-4af6-b7bb-2ddc4146e14d</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Globally unique across systems</p>
+</li>
+<li>
+<p>Can be generated independently</p>
+</li>
+<li>
+<p>Suitable for distributed systems</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Generating large numbers of UUIDs may be inperformant due to lack of entropy</p>
+</li>
+<li>
+<p>Higher storage and indexing requirements</p>
+</li>
+<li>
+<p>Lengthy and less human-readable</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Enumerable ID</strong><br>
+<em>e.g. consecutive integer numbers</em></p>
+</div>
+<div class="paragraph">
+<p><span class="underline">Examples:</span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/person/1</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Simple, easy to work with</p>
+</li>
+<li>
+<p>Efficient generation, indexing and querying in databases</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><strong>Enumeration attacks, data protection / privacy issues</strong></p>
+</li>
+<li>
+<p>Allows attackers or competitors to make inferences about the system</p>
+</li>
+<li>
+<p>Simplifies getting access to private data</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Custom Codes</strong><br>
+<em>e.g. e-mail, username, ticket key, VIN, ISBN&#8230;&#8203;</em></p>
+</div>
+<div class="paragraph">
+<p><span class="underline">Examples:</span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/users/max@mustermann.de</code></p>
+</li>
+<li>
+<p><code>/users/mmustermann</code></p>
+</li>
+<li>
+<p><code>/api/tickets/TKT-23456</code></p>
+</li>
+<li>
+<p><code>/vehicles/WBAAV53471J297245</code></p>
+</li>
+<li>
+<p><code>/books/978-9-6566-2511-9</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Easy resource identification</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><strong>Potentially data protection / privacy issues</strong></p>
+</li>
+<li>
+<p><strong>Some data might be blocked by web application firewalls (WAF)</strong> e.g. e-mail</p>
+</li>
+<li>
+<p>May require additional validation logic</p>
+</li>
+<li>
+<p>Maintaining uniqueness</p>
+</li>
+<li>
+<p>Might change</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Slugs</strong><br>
+<em>human-readable and URL-friendly strings derived from a resource&#8217;s attributes</em></p>
+</div>
+<div class="paragraph">
+<p><span class="underline">Examples:</span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/blogs/my-great-article</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Descriptive</p>
+</li>
+<li>
+<p>URL-friendly</p>
+</li>
+<li>
+<p>Improves SEO and user experience</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><strong>Potentially data protection / privacy issues</strong></p>
+</li>
+<li>
+<p>Uniqueness checks</p>
+</li>
+<li>
+<p>Duplicate handling</p>
+</li>
+<li>
+<p>Might change</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Further reading:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.at7.it/en/blog/rest_uuid_resource">REST APIs: Use UUID to Identify a Resource</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
 <h3 id="interaction-resources"><a class="anchor" href="#interaction-resources"></a>Interaction with resources</h3>
 <div class="paragraph">
-<p>HTTP defines a set of request methods to indicate the desired action to be performed for a given resource. Be compliant with the standardized HTTP method semantics summarized as follows:</p>
+<p>HTTP defines a set of request methods to indicate the desired action to be performed for a given resource.
+Be compliant with the standardized HTTP method semantics summarized as follows:</p>
 </div>
 <div class="sect3">
 <h4 id="get"><a class="anchor" href="#get"></a>GET</h4>
@@ -1037,7 +1414,7 @@ A resource should therefore fulfill the following points:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>GET requests for collection resources may return either <strong>200</strong> (if the collection is empty) or 404 (if the collection is missing)</p>
+<p>GET requests for collection resources may return either <strong>200</strong> (if the collection result is empty) or <strong>404</strong> (if the collection itself is missing)</p>
 </li>
 <li>
 <p>GET requests for individual resources will usually generate a <strong>404</strong> if the resource does not exist</p>
@@ -1047,6 +1424,70 @@ A resource should therefore fulfill the following points:</p>
 </li>
 </ul>
 </div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Situation</th>
+<th class="tableblock halign-left valign-top">Response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requested collection does not exist</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>404</p>
+</div>
+<div class="paragraph">
+<p><span class="underline">Example:</span><br>
+<code>GET /not-existing-collection</code> &#8658; 404</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requested collection is empty</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>200, <code>[]</code></p>
+</div>
+<div class="paragraph">
+<p><span class="underline">Example:</span><br>
+ <code>GET /users</code> &#8658; 200, <code>[]</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requested collection is not empty</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>200, list of results</p>
+</div>
+<div class="paragraph">
+<p><span class="underline">Example:</span><br>
+<code>GET /users</code> &#8658; 200, <code>[ { "id": 1, "username": "ed.example", &#8230;&#8203; }, { "id": 2, &#8230;&#8203; },&#8230;&#8203; ]</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requested individual resource does not exist</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>404</p>
+</div>
+<div class="paragraph">
+<p><span class="underline">Example:</span><br>
+<code>GET /users/1</code> &#8658; 404</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requested individual resource exists</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>200, the resource</p>
+</div>
+<div class="paragraph">
+<p><span class="underline">Example:</span><br>
+ <code>GET /users/1</code> &#8658; 200, <code>{ "id": 1, "username": "ed.example", &#8230;&#8203; }</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect3">
 <h4 id="post-create"><a class="anchor" href="#post-create"></a>POST - Create</h4>
@@ -1092,10 +1533,12 @@ A resource should therefore fulfill the following points:</p>
 <div class="sect3">
 <h4 id="usage-of-post-vs-put"><a class="anchor" href="#usage-of-post-vs-put"></a>Usage of POST vs PUT</h4>
 <div class="paragraph">
-<p>It is the best practice to prefer POST over PUT for creation of resources. This leaves the resource ID under control of the service and allows concentrating on the update semantic using PUT. For example to create a new product rather use POST than PUT:</p>
+<p>It is the best practice to prefer POST to PUT for creation of resources.
+This leaves the resource ID under control of the service and allows concentrating on the update semantic using PUT.
+For example to create a new product rather use POST than PUT:</p>
 </div>
 <div class="paragraph">
-<p><strong>GOOD</strong></p>
+<p><strong>Good</strong></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1103,7 +1546,7 @@ A resource should therefore fulfill the following points:</p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>BAD</strong></p>
+<p><strong>Bad</strong></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1124,7 +1567,22 @@ A resource should therefore fulfill the following points:</p>
 <li>
 <p>if resource have been updated with or without updated content returned PATCH request will generate <strong>200</strong> or <strong>204</strong></p>
 </li>
+<li>
+<p>Can be used to update references between existing resources e.g. <code>PATCH /books/1 { "authorId" : 234 }</code>.</p>
+</li>
 </ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If patching multivalued fields is needed, have a look at <a href="https://medium.com/@isuru89/a-better-way-to-implement-http-patch-operation-in-rest-apis-721396ac82bf">A better way to implement HTTP PATCH operation in REST APIs</a> and <a href="https://datatracker.ietf.org/doc/html/rfc6902">RFC 6902</a>.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
@@ -1132,7 +1590,8 @@ A resource should therefore fulfill the following points:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>use PATCH with partial objects to only update parts of a resource, whenever possible. (This is basically <a href="https://tools.ietf.org/html/rfc7396">JSON Merge Patch</a>, a specialized media type application/merge-patch+json that is a partial resource representation.)</p>
+<p>use PATCH with partial objects to only update parts of a resource, whenever possible.
+(This is basically <a href="https://tools.ietf.org/html/rfc7396">JSON Merge Patch</a>, a specialized media type application/merge-patch+json that is a partial resource representation.)</p>
 </li>
 <li>
 <p>use PATCH with <a href="https://tools.ietf.org/html/rfc6902">JSON Patch</a>, a specialized media type application/json-patch+json that includes instructions on how to change the resource.</p>
@@ -1141,12 +1600,13 @@ A resource should therefore fulfill the following points:</p>
 <p>use PATCH only with an <strong>explicit reason</strong> why POST or PUT does not fit here</p>
 </li>
 <li>
-<p>use PUT over PATCH to update a resource as long as feasible. For example to update a product rather use PUT than PATCH:</p>
+<p>use PUT over PATCH to update a resource as long as feasible.
+For example to update a product rather use PUT than PATCH:</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>GOOD</strong></p>
+<p><strong>Good</strong></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1154,7 +1614,7 @@ A resource should therefore fulfill the following points:</p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>BAD</strong></p>
+<p><strong>Bad</strong></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1181,7 +1641,8 @@ A resource should therefore fulfill the following points:</p>
 <div class="sect3">
 <h4 id="delete-with-query-parameters"><a class="anchor" href="#delete-with-query-parameters"></a>DELETE with query Parameters</h4>
 <div class="paragraph">
-<p>DELETE requests can have query parameters. Query parameters should be used as filter parameters on a resource.</p>
+<p>DELETE requests can have query parameters.
+Query parameters should be used as filter parameters on a resource.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1208,32 +1669,42 @@ A resource should therefore fulfill the following points:</p>
 <div class="sect3">
 <h4 id="head"><a class="anchor" href="#head"></a>HEAD</h4>
 <div class="paragraph">
-<p>HTTP HEAD requests are used to retrieve the header information of single resources and resource collections. For example, if a URL might produce a large download, a HEAD request could read its Content-Length header to check the filesize without actually downloading the file.</p>
+<p>HTTP HEAD requests are used to retrieve the header information of single resources and resource collections.
+For example, if a URL might produce a large download, a HEAD request could read its Content-Length header to check the filesize without actually downloading the file.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>a response to a HEAD method should not have a body. If it has one anyway, that body must be ignored.</p>
+<p>a response to a HEAD method should not have a body.
+If it has one anyway, that body must be ignored.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p><strong>Important</strong></p>
-</div>
-<div class="paragraph">
-<p>In addition, everyone <strong>must</strong> be aware which methods are <strong>safe</strong>, <strong>idempotent</strong> and <strong>cacheable</strong></p>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+In addition, everyone <strong>must</strong> be aware which methods are <strong>safe</strong>, <strong>idempotent</strong> and <strong>cacheable</strong>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
 <h4 id="safe-methods"><a class="anchor" href="#safe-methods"></a>Safe Methods</h4>
 <div class="paragraph">
-<p>As per HTTP specification, the <strong>GET</strong> and <strong>HEAD</strong> methods should be used only for retrieval of resource representations - and they do not update/delete the resource on the server. Both methods are said to be considered "safe".</p>
+<p>As per HTTP specification, the <strong>GET</strong> and <strong>HEAD</strong> methods should be used only for retrieval of resource representations - and they do not update/delete the resource on the server.
+Both methods are said to be considered "safe".</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="idempotent-methods"><a class="anchor" href="#idempotent-methods"></a>Idempotent Methods</h4>
 <div class="paragraph">
-<p>The term idempotent is used more comprehensively to describe an operation that will produce the same results if executed once or multiple times. In HTTP specification, The methods <strong>GET</strong>, <strong>HEAD</strong>, <strong>PUT</strong> and <strong>DELETE</strong> are declared idempotent methods.</p>
+<p>The term idempotent is used more comprehensively to describe an operation that will produce the same results if executed once or multiple times.
+In HTTP specification, The methods <strong>GET</strong>, <strong>HEAD</strong>, <strong>PUT</strong> and <strong>DELETE</strong> are declared idempotent methods.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1245,6 +1716,23 @@ A resource should therefore fulfill the following points:</p>
 </div>
 <div class="sect2">
 <h3 id="versioning"><a class="anchor" href="#versioning"></a>Versioning</h3>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>It is best to avoid versioning altogether</strong>, because versions give you the illusion you could change your API. You can&#8217;t force your customers to switch to the new version. So either you need to support all API versions forever or you can only apply backwards compatible change, but then you do not need API versioning anyway. See <a href="https://www.youtube.com/watch?v=2xgplCQS1bY">"API-Design – Wie man es besser (nicht) macht" by Uwe Friedrichsen</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If you cannot avoid versioning use the following best practices:</p>
+</div>
 <div class="paragraph">
 <p>To identify the version of the API a three number semantic versioning restricted to the format &lt;MAJOR&gt;&lt;MINOR&gt;&lt;PATCH&gt; for versions as follows is recommended:</p>
 </div>
@@ -1264,8 +1752,19 @@ A resource should therefore fulfill the following points:</p>
 <div class="paragraph">
 <p>*breaking changes are backwards-incompatible changes</p>
 </div>
-<div class="paragraph">
-<p><strong>Note:</strong> Even for very small changes that may affect only one percent of the clients, the MAJOR version would have to be incremented, because semantic versioning is not there to indicate how extensive a change is.  Alternatively, a simple scheme like <strong>MAJOR.MINOR</strong> can be used. MAJOR version shows major changes and the MINOR release shows minor changes.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Even for very small changes that may affect only one percent of the clients, the MAJOR version would have to be incremented, because semantic versioning is not there to indicate how extensive a change is.
+Alternatively, a simple scheme like <strong>MAJOR.MINOR</strong> can be used.
+MAJOR version shows major changes and the MINOR release shows minor changes.
+</td>
+</tr>
+</table>
 </div>
 <div class="sect3">
 <h4 id="compatibility"><a class="anchor" href="#compatibility"></a>Compatibility</h4>
@@ -1282,8 +1781,18 @@ A resource should therefore fulfill the following points:</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p><strong>Note:</strong> Prefer to make <strong>compatible changes</strong> without versioning. The following steps will help to make compatible changes:</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Prefer to make <strong>compatible changes</strong> without versioning.
+The following steps will help to make compatible changes:
+</td>
+</tr>
+</table>
 </div>
 <div class="ulist">
 <ul>
@@ -1338,10 +1847,11 @@ If changes <strong>can&#8217;t</strong> be done in a compatible way, then follow
 <div class="sect3">
 <h4 id="deprecation"><a class="anchor" href="#deprecation"></a>Deprecation</h4>
 <div class="paragraph">
-<p>In some cases  it is necessary to phase out an API endpoint, an API version, or an API feature, e.g. if a field or parameter is no longer supported or a whole business functionality behind an endpoint is supposed to be shut down.</p>
+<p>In some cases it is necessary to phase out an API endpoint, an API version, or an API feature, e.g. if a field or parameter is no longer supported or a whole business functionality behind an endpoint is supposed to be shut down.</p>
 </div>
 <div class="paragraph">
-<p>As long as the API endpoints and features are still used by consumers these shut downs are breaking changes and not allowed. To progress the following deprecation rules have to be applied to make sure that changes and actions are well communicated and aligned using deprecation  dates.</p>
+<p>As long as the API endpoints and features are still used by consumers these shut-downs are breaking changes and not allowed.
+To progress the following deprecation rules have to be applied to make sure that changes and actions are well communicated and aligned using deprecation dates.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1556,6 +2066,52 @@ If changes <strong>can&#8217;t</strong> be done in a compatible way, then follow
 <div class="sect1">
 <h2 id="parameter"><a class="anchor" href="#parameter"></a>Parameter</h2>
 <div class="sectionbody">
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Query parameters should be optional (no error if left out)
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="naming-query-parameters"><a class="anchor" href="#naming-query-parameters"></a>Naming of Query Parameters</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Query parameters start with a letter.</p>
+</li>
+<li>
+<p>Query parameters should be either camelCase or snake_case (consistent with case standards for field names).</p>
+</li>
+<li>
+<p>As always, choose good unambiguous names e.g. "firstname" instead of "name".</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Good</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="text">...?firstName=Max
+...?first_name=Max</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Bad</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="text">...?first-name=Max
+...?name=Max</code></pre>
+</div>
+</div>
+</div>
 <div class="sect2">
 <h3 id="filtering"><a class="anchor" href="#filtering"></a>Filtering</h3>
 <div class="paragraph">
@@ -1563,16 +2119,16 @@ If changes <strong>can&#8217;t</strong> be done in a compatible way, then follow
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>//exact match
-GET /persons?name=max
-GET /persons?name=max&amp;surname=muster
+<pre class="CodeRay highlight"><code>// exact match
+GET /persons?firstname=max
+GET /persons?firstname=max&amp;surname=muster
 
-//lower or higher than
+// lower or higher than
 GET /persons?age&lt;18
 GET /persons?age&gt;18
 
-//list of persons whose name contains the &quot;der&quot; word (Leander, Alexander ...)
-GET /persons?name=%2Ader%2A</code></pre>
+// list of persons whose firstname contains the &quot;der&quot; word (Leander, Alexander ...)
+GET /persons?firstname=%2Ader%2A</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1596,7 +2152,7 @@ GET /persons?name=%2Ader%2A</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">//persons older than 21</span>
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// persons older than 21</span>
 GET /persons?age[gte]=<span class="integer">21</span></code></pre>
 </div>
 </div>
@@ -1605,7 +2161,7 @@ GET /persons?age[gte]=<span class="integer">21</span></code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">//persons older than 21</span>
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// persons older than 21</span>
 GET /persons?age=gte:<span class="integer">21</span></code></pre>
 </div>
 </div>
@@ -1614,7 +2170,7 @@ GET /persons?age=gte:<span class="integer">21</span></code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">//items that contain the terms &quot;red chair&quot;</span>
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// items that contain the terms &quot;red chair&quot;</span>
 GET /items?q=title:red chair</code></pre>
 </div>
 </div>
@@ -1622,16 +2178,128 @@ GET /items?q=title:red chair</code></pre>
 <div class="sect2">
 <h3 id="selection"><a class="anchor" href="#selection"></a>Selection</h3>
 <div class="paragraph">
-<p><strong>Field Selection</strong></p>
+<p><strong>Field Selection</strong> (to avoid over-fetching)</p>
 </div>
 <div class="paragraph">
 <p>Mobile clients display just a few attributes in a list. They don’t need all attributes of a resource. Give the API consumer the ability to choose returned fields. This will also reduce the network traffic and speed up the usage of the API.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">//returning name, surname and id of persons</span>
-GET /persons?fields=name,surname,id</code></pre>
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// returning firstname, surname and id of persons</span>
+GET /persons?fields=firstname,surname,id</code></pre>
 </div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+A typical answer to the problem of <em>over-fetching</em> is to use <a href="#graphql">GraphQL</a> instead of REST. But the problem can often be solved using selection instead.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="inclusion"><a class="anchor" href="#inclusion"></a>Inclusion</h3>
+<div class="paragraph">
+<p><strong>Inclusion</strong> (to avoid under-fetching)</p>
+</div>
+<div class="paragraph">
+<p>An example request without including associated resources:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="text">GET /books/1
+
+=&gt; 200, OK:
+{
+   &quot;id&quot;: 1,
+   &quot;title&quot;: &quot;My great novel&quot;,
+   ...
+   &quot;authorId&quot;: 123
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>An example request that includes an associated resource:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="text">GET /books/1?include=author
+
+=&gt; 200, OK:
+{
+   &quot;id&quot;: 1,
+   &quot;title&quot;: &quot;My great novel&quot;,
+   ...
+   &quot;authorId&quot;: 123,
+   &quot;author&quot;: {
+      &quot;id&quot;: 123,
+      &quot;firstname&quot;: &quot;Max&quot;,
+      &quot;surname&quot;: &quot;Maximus&quot;,
+      ...
+   }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>An example request that includes an associated resource selecting only some fields:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="text">GET /books/1
+        ?include=author
+        &amp;fields=title,isbn,author.surname
+
+=&gt; 200, OK:
+{
+   &quot;title&quot;: &quot;My great novel&quot;,
+   &quot;isbn&quot;: &quot;978-7-4171-0270-1&quot;,
+   &quot;author&quot;: {
+      &quot;surname&quot;: &quot;Maximus&quot;
+   }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>An example request that includes multiple associated resources selecting only some fields:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="text">GET /books/1
+        ?include=author,publisher
+        &amp;fields=
+            title,isbn,
+            author.surname,
+            publisher.name
+
+=&gt; 200, OK:
+{
+   &quot;title&quot;: &quot;My great novel&quot;,
+   &quot;isbn&quot;: &quot;978-7-4171-0270-1&quot;,
+   &quot;author&quot;: {
+      &quot;surname&quot;: &quot;Maximus&quot;
+   },
+   &quot;publisher&quot;: {
+      &quot;name&quot;: &quot;Maximus Press&quot;
+   }
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+A typical answer to the problem of <em>under-fetching</em> is to use <a href="#graphql">GraphQL</a> instead of REST. But the problem can often be solved using inclusion instead.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -1641,7 +2309,7 @@ GET /persons?fields=name,surname,id</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">//returns a list of persons sorted by ascending age.</span>
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// returns a list of persons sorted by ascending age.</span>
 GET /persons?sort=+age</code></pre>
 </div>
 </div>
@@ -1660,7 +2328,7 @@ GET /persons?sort=+age</code></pre>
 <p><a href="https://developer.infoconnect.com/paging-results">Offset/Limit-based pagination</a>: numeric offset identifies the first page entry</p>
 </li>
 <li>
-<p><a href="https://developer.twitter.com/en/docs/pagination">Cursor/Limit-based</a>:a unique key element identifies the first page entry</p>
+<p><a href="https://developer.twitter.com/en/docs/pagination">Cursor/Limit-based</a>: a unique key element identifies the first page entry</p>
 </li>
 </ul>
 </div>
@@ -1777,7 +2445,10 @@ GET /persons?sort=+age</code></pre>
 <div class="sect2">
 <h3 id="status-codes"><a class="anchor" href="#status-codes"></a>HTTP status codes</h3>
 <div class="paragraph">
-<p>Define all <strong>success</strong> and service specific <strong>error</strong> responses in your API specification. Both are part of the interface definition and provide important information for service clients to handle standard as well as exceptional situations. But notice, it is not useful to document all technical errors, especially if they are not under control of the service provider. See overview on all HTTP status codes on <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">Wikipedia</a></p>
+<p>Define all <strong>success</strong> and service specific <strong>error</strong> responses in your API specification.
+Both are part of the interface definition and provide important information for service clients to handle standard as well as exceptional situations.
+But notice, it is not useful to document all technical errors, especially if they are not under control of the service provider.
+See overview on all HTTP status codes on <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">Wikipedia</a></p>
 </div>
 <div class="paragraph">
 <p><strong>Success codes</strong></p>
@@ -1818,8 +2489,18 @@ GET /persons?sort=+age</code></pre>
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p><strong>Note:</strong> The <strong>204</strong> response is usually used as a result of a <strong>PUT</strong> request. The status code allows a server to indicate that the action has been successfully applied to the target resource, but that the client doesn&#8217;t need to go away from its current page.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <strong>204</strong> response is usually used as a result of a <strong>PUT</strong> request.
+The status code allows a server to indicate that the action has been successfully applied to the target resource, but that the client doesn&#8217;t need to go away from its current page.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>For example, a <strong>204</strong> status code is commonly used with document editing interfaces corresponding to a "save" action, such that the document being saved remains available to the user for editing.</p>
@@ -1912,7 +2593,8 @@ GET /persons?sort=+age</code></pre>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">409</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>conflict</strong> (business logic) - Request could not be processed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Conflict</strong> (business logic) - Request could not be processed<br>
+e.g. create request but resource already exists</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">POST, PUT, PATCH, DELETE</p></td>
 </tr>
 <tr>
@@ -1922,7 +2604,7 @@ GET /persons?sort=+age</code></pre>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">415</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>unsupported Media Type</strong> - request entity has a media type which the server does not support</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Unsupported Media Type</strong> - request entity has a media type which the server does not support</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">POST, PUT, PATCH, DELETE</p></td>
 </tr>
 <tr>
@@ -1978,26 +2660,91 @@ GET /persons?sort=+age</code></pre>
 <div class="sect2">
 <h3 id="error-details"><a class="anchor" href="#error-details"></a>Error details</h3>
 <div class="paragraph">
-<p>But only returning status codes is usually not enough information to handle an error. High quality error codes tell you what went wrong and why it went wrong. Therefore three basic information should be included in every error message.</p>
+<p>Only returning status codes is usually not enough information to handle an error.
+High quality error codes tell you what went wrong and why it went wrong.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<strong>Follow <a href="https://datatracker.ietf.org/doc/html/rfc7807">RFC 7807</a> as closely as possible</strong>.
+Event though is still only a "Proposed Standard" we recommend to follow it as closely as possible.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>Consider that some details may be interesting for attackers:</strong> Decide carefully what information to include in the error response.
+The details provided ought to focus on helping the client correct the problem, rather than giving debugging information.
+Never include technical details like stack-traces or other sensitive information.
+Please, see the following tip how to deal with these.</p>
+</div>
+<div class="paragraph">
+<p><span class="underline">Example:</span><br>
+Authentication and authorization: "Username does not exist" may be too much detail.
+This way an attacker can find out which users exist and which users don&#8217;t.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>Reference to sensitive or technical detail using a log reference:</strong> A good way to omit sensitive details without loosing them is to log them in the backend accompanied by a log reference (or error detail reference) and to include the log reference in the response.
+This helps support employees and developers analyzing and fixing a problem.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>HTTP status code</strong> - identify source and range [use standardized status codes]</p>
+<p>Log references can be implemented using a UUID.</p>
 </li>
 <li>
-<p><strong>internal reference ID</strong> - document specific notation of errors</p>
+<p>Include the log reference in the detail message or in a separate field of the error response.</p>
 </li>
 <li>
-<p><strong>readable error message</strong> - summarize context, cause and general solutions for the particular error</p>
+<p>Always include a log reference for unknown errors.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Three basic information should be included in every error message.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>HTTP status code</strong> - identify source and range (use standardized status codes)</p>
+</li>
+<li>
+<p><strong>Internal reference ID</strong> - document specific notation of errors</p>
+</li>
+<li>
+<p><strong>Readable error message</strong> - summarize context, cause and general solutions for the particular error</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>IMPORTANT:</strong> If you return a human readable error message, than you must already specify in the design that the message should be hidden in a PROD environment, because the message could be a potential attack vector.</p>
-</div>
-<div class="paragraph">
-<p>Let&#8217;s take the <strong>400 - Bad request</strong> example: completely meaningless for the client-side resolution of the problem. The following example is much more precise:</p>
+<p>Let&#8217;s take the <strong>400 - Bad request</strong> example: completely meaningless for the client-side resolution of the problem.
+The following example is much more precise:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2007,26 +2754,29 @@ GET /persons?sort=+age</code></pre>
 &lt; Connection: close
 &lt; Transfer-Encoding: chunked
 &lt; Content-Type: application/json
-{ &quot;statusCode&quot;: 400,
-&quot;errorMessage&quot;: &quot;Bad Request - Your request is missing parameters. Please verify and resubmit.&quot;,
-&quot;errorId&quot;: &quot;CLIENT_MISSING_PARAMETERS&quot;,
-&quot;requestURL&quot;: https://ft-jpa.ds.net/dabdd/status/v1/register,
-&quot;requestTimestamp&quot;: 2020-05-31T19:01.40z&quot;
-&quot;parameterErrors&quot; [
-   {
-   &quot;name&quot;: &quot;user.name&quot;,
-   &quot;message&quot;: &quot;must not contain null value&quot;
-    },
-   {
-   &quot;name&quot;: &quot;vehicles&quot;,
-   &quot;message&quot;: &quot;must not be empty&quot;
-   }
- ]
+
+{
+    &quot;statusCode&quot;: 400,
+    &quot;errorMessage&quot;: &quot;Bad Request - Your request is missing parameters. Please verify and resubmit.&quot;,
+    &quot;errorId&quot;: &quot;CLIENT_MISSING_PARAMETERS&quot;,
+    &quot;requestURL&quot;: https://ft-jpa.ds.net/dabdd/status/v1/register,
+    &quot;requestTimestamp&quot;: 2020-05-31T19:01.40z&quot;
+    &quot;parameterErrors&quot; [
+       {
+           &quot;name&quot;: &quot;user.name&quot;,
+           &quot;message&quot;: &quot;must not contain null value&quot;
+       },
+       {
+           &quot;name&quot;: &quot;vehicles&quot;,
+           &quot;message&quot;: &quot;must not be empty&quot;
+       }
+     ]
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The following example shows an error-message caused by a correct client side request. The parameter was transmitted correctly by the client but cannot be processed on the server side.</p>
+<p>The following example shows an error-message caused by a correct client side request.
+The parameter was transmitted correctly by the client but cannot be processed on the server side.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2036,16 +2786,24 @@ GET /persons?sort=+age</code></pre>
 &lt; Connection: close
 &lt; Transfer-Encoding: chunked
 &lt; Content-Type: application/json
-{&quot;statusCode&quot;: 422,
-&quot;errorMessage&quot;: &quot;E-Mail address not known.&quot;,
-&quot;errorId&quot;: &quot;LOGIN_EMAIL_UNKNOWN&quot;,
-&quot;requestURL&quot;: &quot;https://ft-jpa.ds.net/dabdd/status/v1/login&quot;,
-&quot;requestTimestamp&quot;: 2020-05-31T19:01.40z&quot;
+
+{
+    &quot;statusCode&quot;: 422,
+    &quot;errorMessage&quot;: &quot;E-Mail address not known.&quot;,
+    &quot;errorId&quot;: &quot;LOGIN_EMAIL_UNKNOWN&quot;,
+    &quot;requestURL&quot;: &quot;https://ft-jpa.ds.net/dabdd/status/v1/login&quot;,
+    &quot;requestTimestamp&quot;: 2020-05-31T19:01.40z&quot;
  }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>It&#8217;s not helpful to use the same structure for every error-cases. Some error-codes need more, some need less information. With regard to the API design it&#8217;s important to identify possible errors at the API and link them to the particular error codes. Furthermore, consider the error responses. Which parameters are returned in the response for which error case? The goal is to have one error code with defined response parameters for each potential error case. To identify the particular response parameter, a few questions should be clarified in advance:</p>
+<p>It&#8217;s not helpful to use the same structure for every error-cases.
+Some error-codes need more, some need less information.
+With regard to the API design it&#8217;s important to identify possible errors at the API and link them to the particular error codes.
+Furthermore, consider the error responses.
+Which parameters are returned in the response for which error case?
+The goal is to have one error code with defined response parameters for each potential error case.
+To identify the particular response parameter, a few questions should be clarified in advance:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2231,7 +2989,7 @@ GET /persons?sort=+age</code></pre>
 <p>describe the purpose of the API</p>
 </li>
 <li>
-<p>describe important use cases to give developers a quick headstart</p>
+<p>describe important use cases to give developers a quick head start</p>
 </li>
 <li>
 <p>enable a developer to use your API as quick as possible</p>
@@ -2283,7 +3041,7 @@ Content-Type: text/json; charset=utf-8
 Content-Length: ...
 {
     &quot;id&quot;: 123,
-    &quot;name&quot;: &quot;Max&quot;,
+    &quot;firstname&quot;: &quot;Max&quot;,
     &quot;surname&quot;:&quot;Mustermann&quot;
 }</code></pre>
 </div>
@@ -2302,7 +3060,7 @@ Content-Type: text/json; charset=utf-8
 Content-Length: ...
 {
     &quot;id&quot;: 123,
-    &quot;name&quot;: &quot;Max&quot;,
+    &quot;firstname&quot;: &quot;Max&quot;,
     &quot;surname&quot;:&quot;Mustermann&quot;
 }</code></pre>
 </div>
@@ -2440,32 +3198,28 @@ Location: /blog/20010101-myblogarticle</code></pre>
 <pre class="CodeRay highlight"><code data-lang="json"><span class="error">G</span><span class="error">E</span><span class="error">T</span> <span class="error">/</span><span class="error">a</span><span class="error">c</span><span class="error">c</span><span class="error">o</span><span class="error">u</span><span class="error">n</span><span class="error">t</span><span class="error">/</span><span class="integer">123</span> <span class="error">H</span><span class="error">T</span><span class="error">T</span><span class="error">P</span><span class="error">/</span><span class="float">1.1</span>
 
 <span class="error">H</span><span class="error">T</span><span class="error">T</span><span class="error">P</span> <span class="float">1.1</span> <span class="integer">200</span> <span class="error">O</span><span class="error">K</span>
+
 {
-<span class="key"><span class="delimiter">&quot;</span><span class="content">account_number</span><span class="delimiter">&quot;</span></span>:<span class="integer">123</span>,
-<span class="key"><span class="delimiter">&quot;</span><span class="content">balance</span><span class="delimiter">&quot;</span></span>:<span class="integer">100</span>,
-<span class="key"><span class="delimiter">&quot;</span><span class="content">links</span><span class="delimiter">&quot;</span></span>:[
-            {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">account_number</span><span class="delimiter">&quot;</span></span>:<span class="integer">123</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">balance</span><span class="delimiter">&quot;</span></span>:<span class="integer">100</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">links</span><span class="delimiter">&quot;</span></span>: [
+        {
             <span class="key"><span class="delimiter">&quot;</span><span class="content">href</span><span class="delimiter">&quot;</span></span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">/account/123/deposit</span><span class="delimiter">&quot;</span></span>,
             <span class="key"><span class="delimiter">&quot;</span><span class="content">rel</span><span class="delimiter">&quot;</span></span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">deposit</span><span class="delimiter">&quot;</span></span>
-
-            },
-            {
+        },
+        {
             <span class="key"><span class="delimiter">&quot;</span><span class="content">href</span><span class="delimiter">&quot;</span></span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">/account/123/withdraw</span><span class="delimiter">&quot;</span></span>,
             <span class="key"><span class="delimiter">&quot;</span><span class="content">rel</span><span class="delimiter">&quot;</span></span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">withdraw</span><span class="delimiter">&quot;</span></span>
-
-            },
-            {
+        },
+        {
             <span class="key"><span class="delimiter">&quot;</span><span class="content">href</span><span class="delimiter">&quot;</span></span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">/account/123/transfer</span><span class="delimiter">&quot;</span></span>,
             <span class="key"><span class="delimiter">&quot;</span><span class="content">rel</span><span class="delimiter">&quot;</span></span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">transfer</span><span class="delimiter">&quot;</span></span>
-
-            },
-            {
+        },
+        {
             <span class="key"><span class="delimiter">&quot;</span><span class="content">href</span><span class="delimiter">&quot;</span></span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">/account/123/close</span><span class="delimiter">&quot;</span></span>,
             <span class="key"><span class="delimiter">&quot;</span><span class="content">rel</span><span class="delimiter">&quot;</span></span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">close</span><span class="delimiter">&quot;</span></span>
-
-            }
-        ]
-
+        }
+    ]
 }</code></pre>
 </div>
 </div>
@@ -2477,17 +3231,16 @@ Location: /blog/20010101-myblogarticle</code></pre>
 <pre class="CodeRay highlight"><code data-lang="json"><span class="error">G</span><span class="error">E</span><span class="error">T</span> <span class="error">/</span><span class="error">a</span><span class="error">c</span><span class="error">c</span><span class="error">o</span><span class="error">u</span><span class="error">n</span><span class="error">t</span><span class="error">/</span><span class="integer">123</span> <span class="error">H</span><span class="error">T</span><span class="error">T</span><span class="error">P</span> <span class="float">1.1</span>
 
 <span class="error">H</span><span class="error">T</span><span class="error">T</span><span class="error">P</span> <span class="float">1.1</span> <span class="integer">200</span> <span class="error">O</span><span class="error">K</span>
+
 {
-<span class="key"><span class="delimiter">&quot;</span><span class="content">account_number</span><span class="delimiter">&quot;</span></span>:<span class="integer">123</span>,
-<span class="key"><span class="delimiter">&quot;</span><span class="content">balance</span><span class="delimiter">&quot;</span></span>:<span class="integer">-50</span>,
-<span class="key"><span class="delimiter">&quot;</span><span class="content">links</span><span class="delimiter">&quot;</span></span>:[
-            {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">account_number</span><span class="delimiter">&quot;</span></span>:<span class="integer">123</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">balance</span><span class="delimiter">&quot;</span></span>:<span class="integer">-50</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">links</span><span class="delimiter">&quot;</span></span>: [
+        {
             <span class="key"><span class="delimiter">&quot;</span><span class="content">href</span><span class="delimiter">&quot;</span></span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">/account/123/deposit</span><span class="delimiter">&quot;</span></span>,
             <span class="key"><span class="delimiter">&quot;</span><span class="content">rel</span><span class="delimiter">&quot;</span></span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">deposit</span><span class="delimiter">&quot;</span></span>
-
-            }
-        ]
-
+        }
+    ]
 }</code></pre>
 </div>
 </div>
@@ -2513,8 +3266,17 @@ Location: /blog/20010101-myblogarticle</code></pre>
 <div class="paragraph">
 <p>GraphQL is an <strong>alternative</strong> to the REST-API allowing clients to query the data in the structure they need, rather than relying on a predefined data structure of a fixed API. This helps to avoid over- and underfetching but brings its own implementation challenges.</p>
 </div>
-<div class="paragraph">
-<p><strong>Note:</strong> GraphQL can not be used instead of a full REST service (HATEOAS). But can be a good alternative to Level 2 REST services of the Richardson Maturity Model.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+GraphQL can not be used instead of a full REST service (HATEOAS). But can be a good alternative to Level 2 REST services of the Richardson Maturity Model.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>In conclusion GraphQL is an interesting approach, but does not offer a solution for all problems. It depends on the specific use case, which tool is more suitable.</p>
@@ -2548,8 +3310,79 @@ Location: /blog/20010101-myblogarticle</code></pre>
 <div class="paragraph">
 <p>It’s a great idea to denote them clearly, e.g., by prefixing them with /actions, although the use of a verb (like “suspend”) already gives it away that we’re breaking away from pure CRUD for better developer experience.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+A detailed documentation is very important to ensure that the API is used correctly.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="checking-existence"><a class="anchor" href="#checking-existence"></a>Checking for Existence</h3>
 <div class="paragraph">
-<p><strong>Note:</strong> A detailed documentation is very important to ensure that the API is used correctly.</p>
+<p>A standard way to check for existence is to use a HEAD request.
+The result of the HEAD request is either 200 OK if the resource exists or 404 NOT_FOUND if it does not. However, the usage of 4xx status codes implies an error situation.
+This might result in unintended triggering of error interceptors on the client side. And generally it is a bad practice to abuse exception handling for control flow.</p>
+</div>
+<div class="paragraph">
+<p>So, what if non-existence is a valid result and not an error? For example checking the existence of the username before trying to create a user?</p>
+</div>
+<div class="paragraph">
+<p><strong>Bad</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="text">GET /user/exampleuser?exists</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is bad, because&#8230;&#8203;<br>
+&#8230;&#8203; the type of response and status code is inconsistent with the ordinary GET request<br>
+&#8230;&#8203; the username is used as a path parameter (see section <a href="#identification-resources">Identification of Resources</a>)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="text">GET /persons/exampleuser/exists</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is bad, because it introduces a new concept not compatible with REST principles (verb in the path).</p>
+</div>
+<div class="paragraph">
+<p>Use filtering and selection for existence checks instead:</p>
+</div>
+<div class="paragraph">
+<p><strong>Good</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="text">GET /persons?username=exampleuser&amp;fields=username
+
+=&gt;
+// If the resource person with the given username exists:
+200 OK, [{&quot;username&quot;: &quot;exampleuser&quot;}]
+
+// If person with the given username does not exist:
+200 OK, []</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+For the check it is advisable to also use a specific query in the backend that only checks existence instead of fetching resource details.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -2584,37 +3417,64 @@ Location: /blog/20010101-myblogarticle</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="http://www.service-oriented-computing.de/richardson-maturity-model.php" class="bare">http://www.service-oriented-computing.de/richardson-maturity-model.php</a></p>
+<p><a href="http://www.service-oriented-computing.de/richardson-maturity-model.php">Richardson Maturity Model</a> - service-oriented-computing.de - good explaination of the Richardson Maturity Model <em>(article and video)</em></p>
 </li>
 <li>
-<p><a href="https://confluence.digitalchargingsolutions.com/display/CI/REST+API+Design+Guidelines" class="bare">https://confluence.digitalchargingsolutions.com/display/CI/REST+API+Design+Guidelines</a></p>
+<p><a href="https://confluence.digitalchargingsolutions.com/display/CI/REST+API+Design+Guidelines">REST API Design Guideline</a> - digitalchargingsolutions.com <em>(guideline)</em></p>
 </li>
 <li>
-<p><a href="https://restfulapi.net" class="bare">https://restfulapi.net</a></p>
+<p><a href="https://restfulapi.net">REST API Tutorial</a> by Lokesh Gupta (howtodoinjava.com)</p>
 </li>
 <li>
-<p><a href="https://developer.bmw.com/connected-vehicle/develop/guides-and-tutorials/api-guides/" class="bare">https://developer.bmw.com/connected-vehicle/develop/guides-and-tutorials/api-guides/</a></p>
+<p><a href="https://developer.bmw.com/connected-vehicle/develop/guides-and-tutorials/api-guides">BMW Connected Vehicle API Guides</a> <em>(tutorial)</em></p>
 </li>
 <li>
-<p><a href="https://docs.microsoft.com/en-US/azure/architecture/best-practices/api-design" class="bare">https://docs.microsoft.com/en-US/azure/architecture/best-practices/api-design</a></p>
+<p><a href="https://opensource.zalando.com/restful-api-guidelines">Zalando RESTful API and Event Guidelines - zalando.com</a> <em>(guideline)</em></p>
 </li>
 <li>
-<p><a href="https://opensource.zalando.com/restful-api-guidelines/" class="bare">https://opensource.zalando.com/restful-api-guidelines/</a></p>
+<p><a href="https://docs.microsoft.com/en-US/azure/architecture/best-practices/api-design">Azure / Architecture / Best Practices: RESTful web API design</a> - microsoft.com <em>(guideline)</em></p>
 </li>
 <li>
-<p><a href="https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md" class="bare">https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md</a></p>
+<p><a href="https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md">Microsoft REST API Guidelines</a> on github.com <em>(guideline)</em></p>
 </li>
 <li>
-<p><a href="https://mathieu.fenniak.net/the-api-checklist/" class="bare">https://mathieu.fenniak.net/the-api-checklist/</a></p>
+<p><a href="https://mathieu.fenniak.net/the-api-checklist">The Web API Checklist - 43 Things To Think About When Designing, Testing, and Releasing your API</a> by Mathieu Fenniak <em>(article)</em></p>
 </li>
 <li>
-<p><a href="https://swagger.io/resources/articles/best-practices-in-api-documentation/" class="bare">https://swagger.io/resources/articles/best-practices-in-api-documentation/</a></p>
+<p><a href="https://swagger.io/resources/articles/best-practices-in-api-documentation">Best practices in API documentation</a> - Swagger.io</p>
 </li>
 <li>
-<p><a href="http://apistylebook.com/design/guidelines/" class="bare">http://apistylebook.com/design/guidelines/</a></p>
+<p><a href="http://apistylebook.com/design/guidelines/">API Stylebook - Design Guidelines</a> - a collection of API design guidelines of various companies and government agencies <em>(collection of guidelines)</em></p>
 </li>
 <li>
-<p><a href="https://restcookbook.com/" class="bare">https://restcookbook.com/</a></p>
+<p><a href="https://restcookbook.com">How to do stuff RESTful</a> - Restcookbook.com <em>(cookbook)</em></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=2xgplCQS1bY">API-Design – Wie man es besser (nicht) macht</a> by <a href="https://twitter.com/ufried">Uwe Friedrichsen</a> <em>(video)</em></p>
+</li>
+<li>
+<p><a href="https://youtu.be/RT_3BSaHce8">The Design of Everyday APIs</a> by <a href="https://www.linkedin.com/in/arnaudlauret/">Arnaud Lauret</a> <em>(video)</em></p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">List of HTTP status codes</a> - Wikipedia <em>(definition)</em></p>
+</li>
+<li>
+<p><a href="https://datatracker.ietf.org/doc/html/rfc7807">RFC 7807: Problem Details for HTTP APIs</a> <em>(RFC)</em></p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/HATEOAS">HATEOAS - Wikipedia</a> <em>(definition)</em></p>
+</li>
+<li>
+<p><a href="https://medium.com/@isuru89/a-better-way-to-implement-http-patch-operation-in-rest-apis-721396ac82bf">A better way to implement HTTP PATCH operation in REST APIs</a> on medium.com <em>(article)</em></p>
+</li>
+<li>
+<p><a href="https://datatracker.ietf.org/doc/html/rfc6902">RFC 6902: JavaScript Object Notation (JSON) Patch</a> <em>(RFC)</em></p>
+</li>
+<li>
+<p><a href="https://api.gov.au/sections/naming-conventions.html">Naming Conventions - api.gov.au</a> <em>(naming convention)</em></p>
+</li>
+<li>
+<p><a href="https://youtu.be/JxeTegu4dD8">REST API Mistakes Every Junior Developer should Avoid</a> by <a href="https://twitter.com/ipenywis">Islem Maboud (aka CoderOne)</a> <em>(video)</em></p>
 </li>
 </ul>
 </div>
@@ -2623,7 +3483,7 @@ Location: /blog/20010101-myblogarticle</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-07-01 05:28:35 UTC
+Last updated 2024-01-09 09:43:51 UTC
 </div>
 </div>
 </body>
