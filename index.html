@@ -535,10 +535,10 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#table-of-contents">Table of Contents</a></li>
 <li><a href="#motivation">Motivation</a>
 <ul class="sectlevel2">
-<li><a href="#good-api">What makes a good API for us at doubleSlash</a></li>
+<li><a href="#good-api">What Makes a Good API for Us at doubleSlash</a></li>
 </ul>
 </li>
-<li><a href="#structure-howtoread">Structure - How to read</a></li>
+<li><a href="#structure-howtoread">Structure - How to Read</a></li>
 <li><a href="#general">General/Introduction</a>
 <ul class="sectlevel2">
 <li><a href="#richardson">Richardson Maturity Model</a></li>
@@ -549,13 +549,13 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#naming-resources">Naming of Resources</a></li>
 <li><a href="#identification-resources">Identification of Resources</a></li>
 <li><a href="#identifier-type">Type of Identifier</a></li>
-<li><a href="#interaction-resources">Interaction with resources</a></li>
+<li><a href="#interaction-resources">Interaction with Resources</a></li>
 <li><a href="#versioning">Versioning</a></li>
 </ul>
 </li>
 <li><a href="#data-formats">Data Formats</a>
 <ul class="sectlevel2">
-<li><a href="#json-payload">Use JSON-encoded body payload</a></li>
+<li><a href="#json-payload">Use JSON-Encoded Body Payload</a></li>
 <li><a href="#date-timeformat">Date and Time Format</a></li>
 <li><a href="#language">Language Code Format</a></li>
 <li><a href="#country">Country Code Format</a></li>
@@ -600,11 +600,12 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#hateoas">HATEOAS</a></li>
 <li><a href="#graphql">GraphQL</a></li>
 <li><a href="#odata">OData</a></li>
-<li><a href="#rest-morethancrud">REST - more than just CRUD</a></li>
+<li><a href="#rest-morethancrud">REST - More Than Just CRUD</a></li>
+<li><a href="#handling-readonly-fields">Handling Read-only Fields</a></li>
 <li><a href="#checking-existence">Checking for Existence</a></li>
 </ul>
 </li>
-<li><a href="#examples">Examples of good REST-APIs</a></li>
+<li><a href="#examples">Examples of Good REST-APIs</a></li>
 <li><a href="#reference">References</a></li>
 </ul>
 </div>
@@ -636,13 +637,13 @@ The following contents are based on the <a href="https://github.com/zalando/rest
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><a href="#good-api">What makes a good API for us at doubleSlash</a></p>
+<p><a href="#good-api">What Makes a Good API for Us at doubleSlash</a></p>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p><a href="#structure-howtoread">Structure - How to read</a></p>
+<p><a href="#structure-howtoread">Structure - How to Read</a></p>
 </li>
 <li>
 <p><a href="#general">General/Introduction</a></p>
@@ -668,7 +669,7 @@ The following contents are based on the <a href="https://github.com/zalando/rest
 <p><a href="#identifier-type">Type of Identifier</a></p>
 </li>
 <li>
-<p><a href="#interaction-resources">Interaction with resources</a></p>
+<p><a href="#interaction-resources">Interaction with Resources</a></p>
 </li>
 <li>
 <p><a href="#versioning">Versioning</a></p>
@@ -681,7 +682,7 @@ The following contents are based on the <a href="https://github.com/zalando/rest
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><a href="#json-payload">Use JSON-encoded body payload</a></p>
+<p><a href="#json-payload">Use JSON-Encoded Body Payload</a></p>
 </li>
 <li>
 <p><a href="#language">Language Code Format</a></p>
@@ -788,7 +789,10 @@ The following contents are based on the <a href="https://github.com/zalando/rest
 <p><a href="#odata">OData</a></p>
 </li>
 <li>
-<p><a href="#rest-morethancrud">REST - more than just CRUD</a></p>
+<p><a href="#rest-morethancrud">REST - More Than Just CRUD</a></p>
+</li>
+<li>
+<p><a href="#handling-readonly-fields">Handling Read-only Fields</a></p>
 </li>
 <li>
 <p><a href="#checking-existence">Checking for Existence</a></p>
@@ -797,7 +801,7 @@ The following contents are based on the <a href="https://github.com/zalando/rest
 </div>
 </li>
 <li>
-<p><a href="#examples">Examples of good REST-APIs</a></p>
+<p><a href="#examples">Examples of Good REST-APIs</a></p>
 </li>
 <li>
 <p><a href="#reference">References</a></p>
@@ -826,7 +830,7 @@ In addition, the guidelines can be brought to the customer as an additional // a
 <p>The guidelines are especially for <strong>developers, software architects and IT consultants</strong>.</p>
 </div>
 <div class="sect2">
-<h3 id="good-api"><a class="anchor" href="#good-api"></a>What makes a good API for us at doubleSlash</h3>
+<h3 id="good-api"><a class="anchor" href="#good-api"></a>What Makes a Good API for Us at doubleSlash</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -947,7 +951,7 @@ In addition, the guidelines can be brought to the customer as an additional // a
 </div>
 </div>
 <div class="sect1">
-<h2 id="structure-howtoread"><a class="anchor" href="#structure-howtoread"></a>Structure - How to read</h2>
+<h2 id="structure-howtoread"><a class="anchor" href="#structure-howtoread"></a>Structure - How to Read</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The <strong>//</strong> REST API Guidelines are divided into several  sections:</p>
@@ -1401,7 +1405,7 @@ Only use enumerable IDs if you can be certain that there is no risk of enumerati
 </div>
 </div>
 <div class="sect2">
-<h3 id="interaction-resources"><a class="anchor" href="#interaction-resources"></a>Interaction with resources</h3>
+<h3 id="interaction-resources"><a class="anchor" href="#interaction-resources"></a>Interaction with Resources</h3>
 <div class="paragraph">
 <p>HTTP defines a set of request methods to indicate the desired action to be performed for a given resource.
 Be compliant with the standardized HTTP method semantics summarized as follows:</p>
@@ -1497,10 +1501,10 @@ Be compliant with the standardized HTTP method semantics summarized as follows:<
 <div class="ulist">
 <ul>
 <li>
-<p>if resource have been <strong>updated</strong> POST request will generate <strong>200</strong></p>
+<p>if resource has been <strong>updated</strong> POST request will generate <strong>200</strong></p>
 </li>
 <li>
-<p>if resource have been <strong>created</strong> POST request will generate <strong>201</strong></p>
+<p>if resource has been <strong>created</strong> POST request will generate <strong>201</strong></p>
 </li>
 <li>
 <p>if the request was <strong>accepted but not has been finished yet</strong>, POST request will generate <strong>202</strong></p>
@@ -1522,10 +1526,10 @@ Be compliant with the standardized HTTP method semantics summarized as follows:<
 <p>PUT requests are usually robust against non-existence of resources by implicitly creating before updating</p>
 </li>
 <li>
-<p>if the resource have been updated- with or without content PUT request will generate <strong>200</strong> or <strong>204</strong></p>
+<p>if the resource has been <strong>updated</strong> PUT request will generate <strong>200</strong> or <strong>204</strong></p>
 </li>
 <li>
-<p>if the resource have been created PUT request will generate <strong>201</strong></p>
+<p>if the resource has been <strong>created</strong> PUT request will generate <strong>201</strong></p>
 </li>
 </ul>
 </div>
@@ -1565,7 +1569,7 @@ For example to create a new product rather use POST than PUT:</p>
 <p>PATCH request are usually not robust against non-existing resources</p>
 </li>
 <li>
-<p>if resource have been updated with or without updated content returned PATCH request will generate <strong>200</strong> or <strong>204</strong></p>
+<p>if resource has been updated with or without updated content returned PATCH request will generate <strong>200</strong> or <strong>204</strong></p>
 </li>
 <li>
 <p>Can be used to update references between existing resources e.g. <code>PATCH /books/1 { "authorId" : 234 }</code>.</p>
@@ -1880,7 +1884,7 @@ To progress the following deprecation rules have to be applied to make sure that
 <h2 id="data-formats"><a class="anchor" href="#data-formats"></a>Data Formats</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="json-payload"><a class="anchor" href="#json-payload"></a>Use JSON-encoded body payload</h3>
+<h3 id="json-payload"><a class="anchor" href="#json-payload"></a>Use JSON-Encoded Body Payload</h3>
 <div class="paragraph">
 <p>JSON is the standard for transferring data, so REST APIs should accept JSON for request payload and also send responses to JSON. In the response header the content-type should be set to <strong>application/json</strong> to make sure that if we send a response encoded as JSON, it will be interpreted as JSON by the client as well.</p>
 </div>
@@ -3292,7 +3296,7 @@ GraphQL can not be used instead of a full REST service (HATEOAS). But can be a g
 </div>
 </div>
 <div class="sect2">
-<h3 id="rest-morethancrud"><a class="anchor" href="#rest-morethancrud"></a>REST - more than just CRUD</h3>
+<h3 id="rest-morethancrud"><a class="anchor" href="#rest-morethancrud"></a>REST - More Than Just CRUD</h3>
 <div class="paragraph">
 <p>Often the architectural style of REST APIs is limited to CRUD operations only. Resources are often mapped exactly to the internal domain-/entity-types using the HTTP verbs (POST, GET, PUT, DELETE). But sometimes you have to implement some kind of business logic that is not directly related to a CRUD operation.</p>
 </div>
@@ -3321,6 +3325,102 @@ A detailed documentation is very important to ensure that the API is used correc
 </td>
 </tr>
 </table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="handling-readonly-fields"><a class="anchor" href="#handling-readonly-fields"></a>Handling Read-only Fields</h3>
+<div class="paragraph">
+<p>How should read-only fields be handled that are returned in <code>GET</code> request responses but shouldn&#8217;t be included in write requests? An example would be some calculated value or the last modification date? Should an error be thrown if read-only fields are included in write requests, or should they be ignored?</p>
+</div>
+<div class="paragraph">
+<p>There may not be a single correct answer to this question, so different options will be briefly outlined here for consideration:</p>
+</div>
+<div class="paragraph">
+<p><strong>Separate data structures for reading and writing</strong> <em>(best choice in most cases):</em></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ensure consistent naming for identical fields in both read and write data structures. Consider using inheritance to enforce this consistency and to avoid code duplication.</p>
+</li>
+<li>
+<p>Example: users endpoint: <code>CreateUserDTO</code> in <code>POST</code> request, <code>UpdateUserDTO</code> in <code>PUT</code> request, <code>UserDTO</code> in <code>GET</code> request and in response body of <code>POST</code> or <code>PUT</code> requests. <code>UserDTO</code> also contains the read-only (calculated) fields, such as <code>updateTimestamp</code>. <code>CreateUserDTO</code> and <code>UpdateUserDTO</code> only contain writable fields.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Ignore read-only fields without warning</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Clearly document the read-only fields!</p>
+</li>
+<li>
+<p>In this case it might be a good idea for the response to contain the updated resource.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Completely separate read and write operations</strong> according to Command Query Responsibility Segregation (CQRS):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Due to the overhead/increased effort, this is only recommended if the application in question is suitable for this architectural style and its benefits outweigh the costs.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Implement a separate interface specifically for querying read-only fields</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Here, read-only fields are considered as their own calculated resource, which can be queried with a separate GET request.</p>
+</li>
+<li>
+<p>The response of the <code>PUT</code>/<code>POST</code> should ideally include a link to the calculated resource.</p>
+</li>
+<li>
+<p>Additional <code>GET</code> requests are needed to retrieve the current state of the resource after an update.</p>
+</li>
+<li>
+<p>This approach is practical only when all read-only fields are calculated (not just generated IDs, etc.). Given that a mix is more common in practice, it’s only suitable for specific scenarios.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Return warnings for ignored read-only fields</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Indicate in the response which fields weren&#8217;t updated and why.</p>
+</li>
+<li>
+<p>Something similar is implemented in WebDAV, see <a href="https://www.rfc-editor.org/rfc/rfc4918#section-11.1">RFC 4918 WebDAV - 207 Multi-Status</a>.</p>
+</li>
+<li>
+<p>However, this is not a common practice outside WebDAV and would require the client to handle the multiple statuses.</p>
+</li>
+<li>
+<p>Therefore, this normally is not recommended!</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Nest read-only fields</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Example: <code>{ &#8230;&#8203; "readonly": { "id": 1, "age": 20 } }</code> (the field "id" cannot change after creation and "age" is calculated from a date field).</p>
+</li>
+<li>
+<p>This is not a common approach and could create more problems than it solves. It is better to prefer simple and flat structures.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
@@ -3388,7 +3488,7 @@ For the check it is advisable to also use a specific query in the backend that o
 </div>
 </div>
 <div class="sect1">
-<h2 id="examples"><a class="anchor" href="#examples"></a>Examples of good REST-APIs</h2>
+<h2 id="examples"><a class="anchor" href="#examples"></a>Examples of Good REST-APIs</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
@@ -3483,7 +3583,7 @@ For the check it is advisable to also use a specific query in the backend that o
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-09-10 15:10:12 UTC
+Last updated 2024-09-23 13:18:53 UTC
 </div>
 </div>
 </body>
